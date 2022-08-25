@@ -1,5 +1,7 @@
 # Truth Tables
 
+![example image](https://brown.ee/Q191GNMJ.png)
+
 A hacky Python DSL for generating truth tables with intermediate steps. Mostly
 useful for introductory CS classes. Only outputs tex, which requires the
 `booktabs` package to be rendered.
@@ -16,7 +18,7 @@ from propositions import Proposition
 P = Proposition.new('P')
 Q = Proposition.new('Q')
 
-proposition = ((P | Q) & ~P) > Q
+proposition = ((P | Q) & ~P) > (Q == P)
 
 print(proposition.tex_table())
 ```
@@ -24,18 +26,18 @@ print(proposition.tex_table())
 This produces
 
 ```
-\begin{tabular}{c c c c c c}
+\begin{tabular}{c c c c c c c c c}
 \toprule
-\(P\) & \(Q\) & \((P \lor Q)\) & \( \lnot P\) & \(((P \lor Q) \land  \lnot P)\) & \((((P \lor Q) \land  \lnot P) \Rightarrow Q)\) \\
+\(P\) & \(Q\) & \((P \lor Q)\) & \( \lnot P\) & \(((P \lor Q) \land  \lnot P)\) & \((Q \Rightarrow P)\) & \((Q \Leftarrow P)\) & \((Q \Leftrightarrow P)\) & \((((P \lor Q) \land  \lnot P) \Rightarrow (Q \Leftrightarrow P))\) \\
 \midrule
-T & T & T & F & F & T \\
-T & F & T & F & F & T \\
-F & T & T & T & T & T \\
-F & F & F & T & F & T \\
+T & T & T & F & F & T & T & T & T \\
+T & F & T & F & F & T & F & F & T \\
+F & T & T & T & T & F & T & F & F \\
+F & F & F & T & F & T & T & T & T \\
 \bottomrule
 \end{tabular}
 ```
 
-which renders to
+which renders to the following image:
 
-![rendered example](https://brown.ee/Q191GNMJ.png)
+![rendered image](https://brown.ee/t9vAHaul.png)

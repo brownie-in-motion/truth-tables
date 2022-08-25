@@ -41,3 +41,7 @@ F & F & F & T & F & T & T & T & T \\
 which renders to the following image:
 
 ![rendered image](https://brown.ee/t9vAHaul.png)
+
+You might notice that the bidirectional implication has two intermediate steps,
+one for each direction. This is because the class I took had extremely deranged
+requirements.
